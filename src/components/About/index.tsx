@@ -1,27 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useSceneStore } from "@/store/paths";
+import styles from "@/components/style.module.css";
+import {View} from "@react-three/drei";
+import Mesh from "./Mesh";
 
 export default function About() {
-    const ref = useRef<HTMLDivElement>(null);
-    const setActiveSection = useSceneStore((s) => s.setActiveSection);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setActiveSection("about");
-            },
-            { threshold: 0.5 }
-        );
-
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, []);
-
     return (
-        <div ref={ref} style={{ height: "100vh" }}>
-
+        <div className={styles.page}>
+            <View>
+                <Mesh />
+            </View>
         </div>
-    );
+    )
 }
