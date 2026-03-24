@@ -10,6 +10,8 @@ export default function HeroSection() {
 
     return (
         <section className={styles.page}>
+            <div ref={ref} className={styles.canvas} />
+
             <View track={ref}>
                 <ambientLight intensity={0.5} />
                 <LandingMesh />
